@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: main-deployment
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: mysimplewebapp
+        image: gcr.io/cedar-helper-131418/mysimplewebapp:v1
+        ports:
+        - containerPort: 8181

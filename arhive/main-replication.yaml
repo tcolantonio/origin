@@ -1,0 +1,41 @@
+{
+  "kind": "ReplicationController",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "mywebapp-replication-controller",
+    "labels": {
+      "state": "serving"
+    }
+  },
+  "spec": {
+    "replicas": 5,
+    "selector": {
+      "app": "frontend"
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "frontend"
+        }
+      },
+      "spec": {
+        "volumes": null,
+        "containers": [
+          {
+            "name": "mysimplewebapp",
+            "image": "gcr.io/cedar-helper-131418/mysimplewebapp:latest",
+            "ports": [
+              {
+                "containerPort": 8181,
+                "protocol": "TCP"
+              }
+            ],
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Always",
+        "dnsPolicy": "ClusterFirst"
+      }
+    }
+  }
+}

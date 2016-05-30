@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vt-test-pod
+  labels:
+    app: web
+spec:
+  containers:
+    - name: mywebcontainer
+      image: gcr.io/cedar-helper-131418/mysimplewebapp:latest
+      ports:
+        - containerPort: 8181
